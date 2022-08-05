@@ -49,3 +49,28 @@
 2022/08/05 16:06:38 main.go:165: Starting HTTP Server , Listening :8080 
 2022/08/05 16:17:13 main.go:165: Starting HTTP Server , Listening :8080 
 2022/08/05 16:37:04 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 16:58:52 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 17:00:23 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 17:08:38 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 17:09:58 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 17:29:50 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 17:43:33 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 17:43:47 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 17:44:59 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 18:20:32 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 18:37:50 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 18:39:03 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 18:42:37 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 18:43:45 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 18:47:26 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 18:55:35 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 19:03:55 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 19:10:22 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 19:19:54 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 19:20:05 product.go:71: get product detail redisCache failed , getting data from database 
+2022/08/05 19:21:55 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 19:22:04 product.go:71: get product detail redisCache failed , getting data from database 
+2022/08/05 19:23:29 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 19:23:46 product.go:70: get product detail redisCache failed , getting data from database 
+2022/08/05 19:24:04 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/05 19:24:24 product.go:70: get product detail redisCache failed , getting data from database 

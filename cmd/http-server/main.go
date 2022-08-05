@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"runtime"
 	"strings"
 	"time"
 )
@@ -21,6 +22,8 @@ var (
 )
 
 func init() {
+	cpuNum := runtime.NumCPU()
+	runtime.GOMAXPROCS(cpuNum - 1)
 	err := setupFlag()
 	if err != nil {
 		log.Fatalf("HTTP setup falied")

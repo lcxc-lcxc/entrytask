@@ -7,6 +7,7 @@ import (
 	"entrytask/internel/constant"
 	"entrytask/internel/dao"
 	pb "entrytask/internel/proto"
+	cache2 "entrytask/internel/redisCache"
 	"entrytask/pkg/utils"
 	"errors"
 	"fmt"
@@ -21,7 +22,7 @@ import (
 type UserService struct {
 	ctx   context.Context
 	dao   *dao.Dao
-	cache *dao.RedisClient
+	cache *cache2.RedisClient
 	pb.UnimplementedUserServiceServer
 }
 
@@ -29,7 +30,7 @@ func NewUserService(ctx context.Context) UserService {
 	return UserService{
 		ctx:   ctx,
 		dao:   dao.NewDBClient(global.DBEngine),
-		cache: dao.NewCache(global.RedisClient),
+		cache: cache2.NewCache(global.RedisClient),
 	}
 }
 
@@ -69,14 +70,14 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 	}
 	cacheUserJson, err := json.Marshal(cacheUser)
 	if err != nil {
-		log.Printf("cache session_id failed : %v", err)
+		log.Printf("redisCache session_id failed : %v", err)
 		return nil, err
 	}
 	// 4 生成session_id并存进redis
 	sessionId := constant.SESSION_ID + "_" + uuid.NewString()
 	err = cache.New[string](svc.cache.RedisStore).Set(svc.ctx, sessionId, string(cacheUserJson), store.WithExpiration(time.Hour))
 	if err != nil {
-		log.Printf("cache session_id failed : %v", err)
+		log.Printf("redisCache session_id failed : %v", err)
 		return nil, err
 	}
 

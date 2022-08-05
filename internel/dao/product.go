@@ -19,6 +19,15 @@ type ProductDetail struct {
 	CommentList        []CommentBrief `json:"comment_list,omitempty"`
 }
 
+////此方法用于缓存ProductDetail时进行序列化
+//func (p *ProductDetail) MarshalBinary() (data []byte, err error) {
+//	return json.Marshal(p)
+//}
+//
+//func (p *ProductDetail) UnmarshalBinary(data []byte) error {
+//	return json.Unmarshal(data, p)
+//}
+
 func (d *Dao) GetProductBriefList(PageIndex int, PageSize int) ([]ProductBrief, error) {
 	var productBriefList []ProductBrief
 
