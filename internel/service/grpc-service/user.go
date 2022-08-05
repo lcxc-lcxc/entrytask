@@ -10,7 +10,8 @@ import (
 	"entrytask/pkg/utils"
 	"errors"
 	"fmt"
-
+	"github.com/eko/gocache/v3/cache"
+	"github.com/eko/gocache/v3/store"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 	"log"
@@ -73,7 +74,7 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 	}
 	// 4 生成session_id并存进redis
 	sessionId := constant.SESSION_ID + "_" + uuid.NewString()
-	err = svc.cache.Set(svc.ctx, sessionId, string(cacheUserJson), time.Hour)
+	err = cache.New[string](svc.cache.RedisStore).Set(svc.ctx, sessionId, string(cacheUserJson), store.WithExpiration(time.Hour))
 	if err != nil {
 		log.Printf("cache session_id failed : %v", err)
 		return nil, err
@@ -87,7 +88,7 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 }
 
 func (svc UserService) Auth(ctx context.Context, req *pb.AuthRequest) (*pb.AuthReply, error) {
-	cacheUserJson, err := svc.cache.Get(svc.ctx, req.SessionId)
+	cacheUserJson, err := cache.New[string](svc.cache.RedisStore).Get(svc.ctx, req.SessionId)
 	if err != nil {
 		log.Println("auth failed : get redis session message failed")
 		return nil, err

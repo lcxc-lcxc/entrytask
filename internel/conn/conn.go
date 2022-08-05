@@ -3,7 +3,7 @@ package conn
 import (
 	"entrytask/pkg/setting"
 	"fmt"
-	"github.com/go-redis/redis/v9"
+	"github.com/go-redis/redis/v8"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"gorm.io/driver/mysql"
