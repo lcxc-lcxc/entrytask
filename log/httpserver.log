@@ -1,0 +1,50 @@
+2022/08/02 18:25:03 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/02 18:26:24 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/02 18:26:39 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/02 18:35:02 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/02 18:35:05 user.go:28: service UserRegister Failed : rpc error: code = Unknown desc = Register : create user failed: Error 1054: Unknown column 'created_at' in 'field list'
+2022/08/02 18:36:38 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/02 18:36:41 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = Register : create user failed: Error 1054: Unknown column 'created_at' in 'field list'
+2022/08/02 18:36:46 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = Register : create user failed: Error 1054: Unknown column 'created_at' in 'field list'
+2022/08/02 18:37:39 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = Register : create user failed: Error 1054: Unknown column 'created_at' in 'field list'
+2022/08/02 18:38:42 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = Register : create user failed: Error 1054: Unknown column 'created_at' in 'field list'
+2022/08/02 18:50:13 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = Register : user already exists
+2022/08/02 22:55:54 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/03 11:37:04 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/03 11:51:10 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/03 12:03:22 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/03 12:11:14 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/03 12:21:15 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/03 16:34:27 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 11:32:58 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 11:34:29 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 11:47:59 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 11:51:54 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 11:54:36 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 11:57:30 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 11:59:56 product.go:22: Get Product List Failed
+2022/08/04 14:10:23 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 14:12:11 product.go:22: Get Product List Failed
+2022/08/04 14:13:47 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 14:14:23 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 14:25:43 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 15:28:50 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 16:46:37 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 16:54:29 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 17:16:12 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 17:22:36 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 17:43:11 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 18:44:48 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 18:45:51 commentReply.go:22: get comment reply list failed 
+2022/08/04 18:47:12 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/04 18:47:55 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 10:48:53 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 10:50:34 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 10:57:49 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 11:13:07 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 11:13:59 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = Register : user already exists
+2022/08/05 11:40:22 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 11:48:05 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 11:58:11 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 16:06:38 main.go:165: Starting HTTP Server , Listening :8080 
+2022/08/05 16:17:13 main.go:165: Starting HTTP Server , Listening :8080 
