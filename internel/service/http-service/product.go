@@ -4,11 +4,15 @@ import (
 	"context"
 	"entrytask/internel/constant"
 	"entrytask/internel/dao"
+	"entrytask/internel/redisCache"
+
 	"entrytask/pkg/utils"
 	"github.com/eko/gocache/v3/cache"
 	"github.com/eko/gocache/v3/marshaler"
+	"github.com/eko/gocache/v3/store"
 	"github.com/vmihailenco/msgpack"
 	"log"
+	"time"
 )
 
 type ProductListRequest struct {
@@ -67,11 +71,12 @@ func (svc *Service) ProductDetail(request *ProductDetailRequest) (*ProductDetail
 	// 1 缓存层
 
 	loadFunction := func(ctx context.Context, key any) (any, error) {
-		log.Println("get product detail redisCache failed , getting data from database ")
+		log.Println("get product cache failed , getting data from database ")
 		productIdStr, _ := key.(string)
 		productId, _ := utils.ConvertRedisKeyToUintId(productIdStr)
 
 		productDetail, err := svc.dao.GetProductDetail(productId)
+
 		if err != nil {
 			return nil, err
 		}
@@ -81,17 +86,21 @@ func (svc *Service) ProductDetail(request *ProductDetailRequest) (*ProductDetail
 
 	marshal := marshaler.New(
 
-		cache.NewLoadable[any](
+		redisCache.NewOptionsLoadableCache[any](
 			loadFunction,
-			cache.New[any](svc.cache.RedisStore)),
+			cache.New[any](svc.cache.RedisStore),
+			store.WithExpiration(time.Hour)),
 	)
 
-	redisProductDetail, err := marshal.Get(svc.ctx, utils.ConvertUintIdToRedisKey(constant.PRODUCT_ID, request.ProductId), new(dao.ProductDetail))
+	productDetailBytes, err := marshal.Get(context.Background(), utils.ConvertUintIdToRedisKey(constant.PRODUCT_ID, request.ProductId), new(dao.ProductDetail))
 	if err != nil {
 		return nil, err
 	}
-	productDetail, _ := redisProductDetail.(*dao.ProductDetail)
+	productDetail, _ := productDetailBytes.(*dao.ProductDetail)
 
+	if err != nil {
+		return nil, err
+	}
 	return &ProductDetailResponse{
 		ProductDetail: productDetail,
 	}, nil

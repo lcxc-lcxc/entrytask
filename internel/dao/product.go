@@ -80,10 +80,12 @@ func (d *Dao) GetProductDetail(productId uint) (*ProductDetail, error) {
 			ID: productId,
 		},
 	}
+
 	product, err := p.SelectProduct(d.engine)
 	if err != nil {
 		return nil, err
 	}
+
 	// 2 获取product的评论信息
 	c := model.CommentInfo{}
 
@@ -113,3 +115,43 @@ func (d *Dao) GetProductDetail(productId uint) (*ProductDetail, error) {
 	return productDetail, nil
 
 }
+
+//
+//func (d *Dao) GetProductCache(productId uint) (*model.Product, error) {
+//	// 1 缓存层
+//
+//	loadFunction := func(ctx context.Context, key any) (any, error) {
+//		log.Println("get product cache failed , getting data from database ")
+//		productIdStr, _ := key.(string)
+//		productId, _ := utils.ConvertRedisKeyToUintId(productIdStr)
+//
+//		p := model.Product{
+//			Model: gorm.Model{
+//				ID: productId,
+//			},
+//		}
+//
+//		product, err := p.SelectProduct(d.engine)
+//		if err != nil {
+//			return nil, err
+//		}
+//		//访问数据库后一定要以 []byte返回（通过msgpack的marshal方法），否则会出错
+//		return msgpack.Marshal(product)
+//	}
+//
+//	marshal := marshaler.New(
+//
+//		redisCache.NewOptionsLoadableCache[any](
+//			loadFunction,
+//			cache.New[any](d.RedisClient.RedisStore),
+//			store.WithExpiration(time.Hour)),
+//	)
+//
+//	productBytes, err := marshal.Get(context.Background(), utils.ConvertUintIdToRedisKey(constant.PRODUCT_ID, productId), new(model.Product))
+//	if err != nil {
+//		return nil, err
+//	}
+//	product, _ := productBytes.(*model.Product)
+//	return product, nil
+//
+//}
