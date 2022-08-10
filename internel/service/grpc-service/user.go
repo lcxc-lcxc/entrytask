@@ -7,12 +7,9 @@ import (
 	"entrytask/internel/constant"
 	"entrytask/internel/dao"
 	pb "entrytask/internel/proto"
-	"entrytask/internel/redisCache"
 	"entrytask/pkg/utils"
 	"errors"
 	"fmt"
-	"github.com/eko/gocache/v3/cache"
-	"github.com/eko/gocache/v3/store"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 	"log"
@@ -20,17 +17,16 @@ import (
 )
 
 type UserService struct {
-	ctx   context.Context
-	dao   *dao.Dao
-	cache *redisCache.RedisClient
+	ctx context.Context
+	dao *dao.Dao
+
 	pb.UnimplementedUserServiceServer
 }
 
 func NewUserService(ctx context.Context) UserService {
 	return UserService{
-		ctx:   ctx,
-		dao:   dao.NewDBClient(global.DBEngine),
-		cache: redisCache.NewCache(global.RedisClient),
+		ctx: ctx,
+		dao: dao.NewDAO(global.DBEngine, global.RedisClient),
 	}
 }
 
@@ -70,15 +66,15 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 	}
 	cacheUserJson, err := json.Marshal(cacheUser)
 	if err != nil {
-		log.Printf("redisCache session_id failed : %v", err)
+		log.Printf("cache session_id failed : %v", err)
 		return nil, err
 	}
 	// 4 生成session_id并存进redis
 	sessionId := uuid.NewString()
 
-	err = cache.New[string](svc.cache.RedisStore).Set(svc.ctx, constant.SESSION_ID+":"+sessionId, string(cacheUserJson), store.WithExpiration(time.Hour))
+	err = svc.dao.RedisClient.Set(svc.ctx, constant.SESSION_ID+":"+sessionId, string(cacheUserJson), time.Hour).Err()
 	if err != nil {
-		log.Printf("redisCache session_id failed : %v", err)
+		log.Printf("cache session_id failed : %v", err)
 		return nil, err
 	}
 
@@ -90,7 +86,7 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 }
 
 func (svc UserService) Auth(ctx context.Context, req *pb.AuthRequest) (*pb.AuthReply, error) {
-	cacheUserJson, err := cache.New[string](svc.cache.RedisStore).Get(svc.ctx, constant.SESSION_ID+":"+req.SessionId)
+	cacheUserJson, err := svc.dao.RedisClient.Get(svc.ctx, constant.SESSION_ID+":"+req.SessionId).Result()
 	if err != nil {
 		log.Println("auth failed : get redis session message failed")
 		return nil, err

@@ -17,8 +17,8 @@ type PingRequest struct {
 }
 
 func (p Ping) Ping(c *gin.Context) {
-	//c.JSON(200, gin.H{"message": "pong"})
-	//
+	c.JSON(200, gin.H{"message": "pong"})
+
 	resp := response.NewResponse(c)
 
 	param := PingRequest{}
@@ -27,5 +27,5 @@ func (p Ping) Ping(c *gin.Context) {
 		resp.ResponseError(constant.ServerError.GetRetCode())
 		return
 	}
-	resp.ResponseOK("pong")
+
 }

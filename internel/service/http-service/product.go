@@ -1,18 +1,7 @@
 package http_service
 
 import (
-	"context"
-	"entrytask/internel/constant"
 	"entrytask/internel/dao"
-	"entrytask/internel/redisCache"
-
-	"entrytask/pkg/utils"
-	"github.com/eko/gocache/v3/cache"
-	"github.com/eko/gocache/v3/marshaler"
-	"github.com/eko/gocache/v3/store"
-	"github.com/vmihailenco/msgpack"
-	"log"
-	"time"
 )
 
 type ProductListRequest struct {
@@ -68,35 +57,7 @@ func (svc *Service) ProductSearch(request *ProductSearchRequest) (*ProductSearch
 
 func (svc *Service) ProductDetail(request *ProductDetailRequest) (*ProductDetailResponse, error) {
 
-	// 1 缓存层
-
-	loadFunction := func(ctx context.Context, key any) (any, error) {
-		log.Println("get product cache failed , getting data from database ")
-		productIdStr, _ := key.(string)
-		productId, _ := utils.ConvertRedisKeyToUintId(productIdStr)
-
-		productDetail, err := svc.dao.GetProductDetail(productId)
-
-		if err != nil {
-			return nil, err
-		}
-		//访问数据库后一定要以 []byte返回（通过msgpack的marshal方法），否则会出错
-		return msgpack.Marshal(productDetail)
-	}
-
-	marshal := marshaler.New(
-
-		redisCache.NewOptionsLoadableCache[any](
-			loadFunction,
-			cache.New[any](svc.cache.RedisStore),
-			store.WithExpiration(time.Hour)),
-	)
-
-	productDetailBytes, err := marshal.Get(context.Background(), utils.ConvertUintIdToRedisKey(constant.PRODUCT_ID, request.ProductId), new(dao.ProductDetail))
-	if err != nil {
-		return nil, err
-	}
-	productDetail, _ := productDetailBytes.(*dao.ProductDetail)
+	productDetail, err := svc.dao.GetProductDetail(request.ProductId)
 
 	if err != nil {
 		return nil, err
@@ -105,3 +66,33 @@ func (svc *Service) ProductDetail(request *ProductDetailRequest) (*ProductDetail
 		ProductDetail: productDetail,
 	}, nil
 }
+
+//// 1 缓存层
+//
+//loadFunction := func(ctx context.Context, key any) (any, error) {
+//	log.Println("get product cache failed , getting data from database ")
+//	productIdStr, _ := key.(string)
+//	productId, _ := utils.ConvertRedisKeyToUintId(productIdStr)
+//
+//	productDetail, err := svc.dao.GetProductDetail(productId)
+//
+//	if err != nil {
+//		return nil, err
+//	}
+//	//访问数据库后一定要以 []byte返回（通过msgpack的marshal方法），否则会出错
+//	return msgpack.Marshal(productDetail)
+//}
+//
+//marshal := marshaler.New(
+//
+//	cache.NewOptionsLoadableCache[any](
+//		loadFunction,
+//		cache.New[any](svc.cache.RedisStore),
+//		store.WithExpiration(time.Hour)),
+//)
+//
+//productDetailBytes, err := marshal.Get(context.Background(), utils.ConvertUintIdToRedisKey(constant.PRODUCT_ID, request.ProductId), new(dao.ProductDetail))
+//if err != nil {
+//	return nil, err
+//}
+//productDetail, _ := productDetailBytes.(*dao.ProductDetail)
