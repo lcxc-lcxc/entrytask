@@ -1,7 +1,10 @@
 package dao
 
 import (
+	"context"
+	"entrytask/internel/constant"
 	"entrytask/internel/model"
+	"entrytask/pkg/utils"
 	"gorm.io/gorm"
 	"time"
 )
@@ -71,6 +74,7 @@ func (d *Dao) CreateCommentInfo(userId uint, username string, productId uint, co
 		Content:   content,
 	}
 	info, err := commentInfo.CreateCommentInfo(d.engine)
+	d.RedisClient.Del(context.Background(), utils.ConvertUintIdToRedisKey(constant.PRODUCT_ID, info.ProductId))
 	if err != nil {
 		return 0, err
 	}
