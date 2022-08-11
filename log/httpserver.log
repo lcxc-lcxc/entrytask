@@ -201,3 +201,10 @@
 2022/08/11 12:27:23 main.go:168: Starting HTTP Server , Listening :8080 
 2022/08/11 12:33:54 main.go:168: Starting HTTP Server , Listening :8080 
 2022/08/11 12:35:16 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 17:55:50 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 17:56:11 product.go:94: get product search cache failed , getting data from database 
+2022/08/11 17:56:15 product.go:158: get product cache failed , getting data from database 
+2022/08/11 17:56:15 product.go:189: get product comment cache failed , getting data from database 
+2022/08/11 18:10:58 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 18:11:46 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 18:50:57 main.go:168: Starting HTTP Server , Listening :8080 
