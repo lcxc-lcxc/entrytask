@@ -38,14 +38,17 @@ func (d *Dao) GetProductBriefList(PageIndex int, PageSize int) ([]ProductBrief, 
 	var productBriefList []ProductBrief
 
 	p := model.Product{}
-	//productList, err := p.SelectProductList(d.engine, PageIndex, PageSize)
-
-	productIds, err := p.SelectProductIdList(d.engine, PageIndex, PageSize)
-	if err != nil {
-		return nil, err
-	}
-
-	productList, err := d.GetProductBriefListCache(productIds...)
+	productList, err := p.SelectProductList(d.engine, PageIndex, PageSize)
+	//
+	//startTime := time.Now()
+	//productIds, err := p.SelectProductIdList(d.engine, PageIndex, PageSize)
+	//if err != nil {
+	//	return nil, err
+	//}
+	//dur := time.Since(startTime)
+	//fmt.Println(dur)
+	//
+	//productList, err := d.GetProductBriefListCache(productIds...)
 
 	if err != nil {
 		return nil, err
@@ -69,8 +72,8 @@ func (d *Dao) GetProductCount() (int, error) {
 
 func (d *Dao) GetProductSearch(searchBy string) ([]ProductBrief, error) {
 	var productBriefList []ProductBrief
-	p := model.Product{}
-	productSearch, err := p.SelectProductSearch(d.engine, searchBy)
+
+	productSearch, err := d.GetProductSearchCache(searchBy)
 	if err != nil {
 		return nil, err
 	}
@@ -83,6 +86,29 @@ func (d *Dao) GetProductSearch(searchBy string) ([]ProductBrief, error) {
 		})
 	}
 	return productBriefList, nil
+
+}
+
+func (d *Dao) GetProductSearchCache(searchBy string) ([]model.Product, error) {
+	loadFunction := func(ctx context.Context, key any) ([]model.Product, error) {
+		log.Println("get product search cache failed , getting data from database ")
+		searchByRedisKey, _ := key.(string)
+		searchBy := utils.ConvertRedisKeyToString(searchByRedisKey)
+
+		p := model.Product{}
+		productSearch, err := p.SelectProductSearch(d.engine, searchBy)
+
+		if err != nil {
+			return nil, err
+		}
+		return productSearch, nil
+	}
+	loadableCache := cache.NewLoadableCache[[]model.Product](loadFunction, d.RedisClient, time.Hour)
+	productSearch, err := loadableCache.Get(context.Background(), utils.ConvertStringToRedisKey(constant.SEARCH_BY, searchBy))
+	if err != nil {
+		return nil, err
+	}
+	return productSearch, nil
 
 }
 

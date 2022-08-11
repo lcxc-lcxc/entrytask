@@ -145,3 +145,57 @@
 2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
 2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
 2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:42 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:55:45 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:56:26 product.go:163: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:22 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:44 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:57:50 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 12:05:54 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:07:04 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:07:09 product.go:91: get product search cache failed , getting data from database 
+2022/08/11 12:08:01 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:10:56 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:13:33 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:16:00 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:19:23 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:19:56 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:21:43 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:24:46 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 12:27:23 main.go:168: Starting HTTP Server , Listening :8080 

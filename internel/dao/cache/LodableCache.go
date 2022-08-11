@@ -3,6 +3,7 @@ package cache
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"github.com/go-redis/redis/v8"
 	"sync"
 	"time"
@@ -76,7 +77,10 @@ func (c *LoadableCache[T]) Get(ctx context.Context, key string) (T, error) {
 
 //todo
 func (c *LoadableCache[T]) MGet(ctx context.Context, keys ...string) ([]T, error) {
+	startTime := time.Now()
 	values, err := c.cache.MGet(ctx, keys...).Result()
+	dur := time.Since(startTime)
+	fmt.Println("MGET: " + dur.String())
 	if err != nil {
 		return nil, err
 	}
