@@ -38,7 +38,15 @@ func (d *Dao) GetProductBriefList(PageIndex int, PageSize int) ([]ProductBrief, 
 	var productBriefList []ProductBrief
 
 	p := model.Product{}
-	productList, err := p.SelectProductList(d.engine, PageIndex, PageSize)
+	//productList, err := p.SelectProductList(d.engine, PageIndex, PageSize)
+
+	productIds, err := p.SelectProductIdList(d.engine, PageIndex, PageSize)
+	if err != nil {
+		return nil, err
+	}
+
+	productList, err := d.GetProductBriefListCache(productIds...)
+
 	if err != nil {
 		return nil, err
 	}
@@ -135,7 +143,6 @@ func (d *Dao) GetProductCache(productId uint) (*model.Product, error) {
 		if err != nil {
 			return nil, err
 		}
-		//访问数据库后一定要以 []byte返回（通过msgpack的marshal方法），否则会出错
 		return product, nil
 	}
 
@@ -177,7 +184,35 @@ func (d *Dao) GetProductCommentInfoListCache(productId uint) ([]model.CommentInf
 
 }
 
-func (d *Dao) GetProductBriefListCache(PageIndex int, PageSize int) ([]ProductBrief, error) {
+func (d *Dao) GetProductBriefListCache(productIds ...uint) ([]*model.Product, error) {
 
-	return nil, nil
+	// 从数据库获取model.Product的函数
+	loadFunction := func(ctx context.Context, key any) (*model.Product, error) {
+		log.Println("get product comment cache failed , getting data from database ")
+		productIdStr, _ := key.(string)
+		productId, _ := utils.ConvertRedisKeyToUintId(productIdStr)
+
+		p := model.Product{
+			Model: gorm.Model{
+				ID: productId,
+			},
+		}
+
+		product, err := p.SelectProduct(d.engine)
+		if err != nil {
+			return nil, err
+		}
+		return product, nil
+	}
+	loadableCache := cache.NewLoadableCache[*model.Product](loadFunction, d.RedisClient, time.Hour)
+	var keys []string
+	for _, productId := range productIds {
+		keys = append(keys, utils.ConvertUintIdToRedisKey(constant.PRODUCT_ID, productId))
+	}
+	products, err := loadableCache.MGet(context.Background(), keys...)
+	if err != nil {
+		return nil, err
+	}
+	return products, nil
+
 }

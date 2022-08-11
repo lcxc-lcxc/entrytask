@@ -105,3 +105,43 @@
 2022/08/10 22:51:25 main.go:168: Starting HTTP Server , Listening :8080 
 2022/08/10 22:55:24 main.go:168: Starting HTTP Server , Listening :8080 
 2022/08/10 22:55:33 product.go:156: get product comment cache failed , getting data from database 
+2022/08/11 10:45:45 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 10:48:48 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 10:48:57 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 10:49:57 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 10:54:42 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 10:55:19 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 10:58:16 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 10:59:46 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 11:01:28 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 11:01:48 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:02:55 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:02:55 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:02:55 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:02:55 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:02:55 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:04:40 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:07:13 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 11:07:18 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:09:49 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 11:09:56 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:10:23 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:10:26 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:10:26 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:10:26 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:10:26 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:10:26 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:12 main.go:168: Starting HTTP Server , Listening :8080 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 
+2022/08/11 11:11:53 product.go:191: get product comment cache failed , getting data from database 

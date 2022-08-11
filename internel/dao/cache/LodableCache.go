@@ -3,7 +3,6 @@ package cache
 import (
 	"context"
 	"encoding/json"
-
 	"github.com/go-redis/redis/v8"
 	"sync"
 	"time"
@@ -73,6 +72,35 @@ func (c *LoadableCache[T]) Get(ctx context.Context, key string) (T, error) {
 	c.setChannel <- &loadableKeyValue[T]{key, object}
 
 	return object, err
+}
+
+//todo
+func (c *LoadableCache[T]) MGet(ctx context.Context, keys ...string) ([]T, error) {
+	values, err := c.cache.MGet(ctx, keys...).Result()
+	if err != nil {
+		return nil, err
+	}
+	var returnValues []T
+	for idx, value := range values {
+		if value == nil {
+			object, err := c.loadFunc(ctx, keys[idx])
+			if err != nil {
+				return nil, err
+			}
+			c.setChannel <- &loadableKeyValue[T]{keys[idx], object}
+			returnValues = append(returnValues, object)
+		} else {
+			t := new(T)
+			valueBytes := []byte(value.(string))
+			err := json.Unmarshal(valueBytes, t)
+			if err != nil {
+				return nil, err
+			}
+			returnValues = append(returnValues, *t)
+
+		}
+	}
+	return returnValues, nil
 }
 
 // Set sets a value in available caches

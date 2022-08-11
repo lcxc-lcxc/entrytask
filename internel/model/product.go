@@ -47,13 +47,22 @@ func (p Product) SelectProductSearch(db *gorm.DB, searchBy string) ([]Product, e
 }
 
 func (p Product) SelectProduct(db *gorm.DB) (*Product, error) {
-	var product Product
-	err := db.Model(&p).First(&product).Error
+	err := db.First(&p, p.ID).Error
 	if err != nil {
 		log.Println("Get product by id failed")
 		return nil, err
 	}
-	return &product, nil
+	return &p, nil
+}
+
+func (p Product) SelectProductIdList(db *gorm.DB, pageIndex, pageSize int) ([]uint, error) {
+	var ids []uint
+	err := db.Table(constant.PRODUCT_TAB).Select("id").Offset(pageIndex).Limit(pageSize).Scan(&ids).Error
+	if err != nil {
+		return nil, err
+	}
+	return ids, nil
+	//:= db.Raw("select id from "+constant.PRODUCT_TAB+" OFFSET ? LIMIT ?", pageIndex, pageSize).Scan(ids).
 }
 
 func (p Product) TableName() string {
