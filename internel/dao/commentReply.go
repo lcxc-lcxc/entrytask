@@ -13,6 +13,7 @@ type CommentReplyBrief struct {
 	CreatedAt     time.Time `json:"created_at"`
 }
 
+// CreateCommentReply 创建用户回复
 func (d *Dao) CreateCommentReply(userId uint, username string, replyToId uint, replyToName string, productId uint, commentId uint, replyContent string) (uint, error) {
 	commentReply := model.CommentReply{
 		ReplyFromId:   userId,

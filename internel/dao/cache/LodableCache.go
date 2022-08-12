@@ -9,6 +9,10 @@ import (
 	"time"
 )
 
+/**
+缓存组件，如果缓存miss，可以自动加载数据库中的内容。
+*/
+
 type loadableKeyValue[T any] struct {
 	key   string
 	value T
@@ -39,6 +43,9 @@ func NewLoadableCache[T any](loadFunc LoadFunction[T], cache *redis.Client, time
 	return loadable
 }
 
+/**
+该函数从管道里面获取内容，set到redis里面。相当于异步set cache
+*/
 func (c *LoadableCache[T]) setter(timeout time.Duration) {
 	defer c.setterWg.Done()
 
@@ -75,7 +82,7 @@ func (c *LoadableCache[T]) Get(ctx context.Context, key string) (T, error) {
 	return object, err
 }
 
-//todo
+// MGet 该函数需要的loadFunction应该是获取单个key-value的loadFunction
 func (c *LoadableCache[T]) MGet(ctx context.Context, keys ...string) ([]T, error) {
 	startTime := time.Now()
 	values, err := c.cache.MGet(ctx, keys...).Result()
@@ -122,6 +129,7 @@ func (c *LoadableCache[T]) Delete(ctx context.Context, key string) error {
 	return c.cache.Del(ctx, key).Err()
 }
 
+// Close close the channel and let the go routine return
 func (c *LoadableCache[T]) Close() error {
 	close(c.setChannel)
 	c.setterWg.Wait()

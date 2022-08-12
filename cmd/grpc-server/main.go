@@ -18,9 +18,10 @@ import (
 )
 
 func main() {
-	//todo  opts?
+
 	server := grpc.NewServer()
 	ctx := context.Background()
+	// 注册userService 为grpc服务
 	pb.RegisterUserServiceServer(server, grpc_service.NewUserService(ctx))
 
 	lis, err := net.Listen("tcp", global.RpcServerSetting.Host+":"+global.RpcServerSetting.Port)
@@ -70,6 +71,7 @@ func init() {
 
 }
 
+// setupSetting 从viper读取配置
 func setupSetting() error {
 	log.Printf("%v", config)
 	s, err := setting.NewSetting(strings.Split(config, ",")...)
@@ -120,7 +122,6 @@ func setupDBEngine() error {
 
 }
 func setupFlag() error {
-	//StringVar defines a string flag with specified name, default value, and usage string. The argument p points to a string variable in which to store the value of the flag.
 	flag.StringVar(&port, "port", "", "启动端口")
 	flag.StringVar(&mode, "mode", "", "启动模式")
 	flag.StringVar(&config, "config", "./config", "配置文件路径")

@@ -34,6 +34,7 @@ type ProductDetail struct {
 //	return json.Unmarshal(data, p)
 //}
 
+// GetProductBriefList 获取产品列表所调用的方法
 func (d *Dao) GetProductBriefList(PageIndex int, PageSize int) ([]ProductBrief, error) {
 	var productBriefList []ProductBrief
 
@@ -65,11 +66,13 @@ func (d *Dao) GetProductBriefList(PageIndex int, PageSize int) ([]ProductBrief, 
 
 }
 
+// GetProductCount 获取产品总数
 func (d *Dao) GetProductCount() (int, error) {
 	p := model.Product{}
 	return p.SelectProductCount(d.engine)
 }
 
+// GetProductSearch 查询商品
 func (d *Dao) GetProductSearch(searchBy string) ([]ProductBrief, error) {
 	var productBriefList []ProductBrief
 
@@ -89,6 +92,7 @@ func (d *Dao) GetProductSearch(searchBy string) ([]ProductBrief, error) {
 
 }
 
+// GetProductSearchCache 封装了查询商品时的缓存模块
 func (d *Dao) GetProductSearchCache(searchBy string) ([]model.Product, error) {
 	loadFunction := func(ctx context.Context, key any) ([]model.Product, error) {
 		log.Println("get product search cache failed , getting data from database ")
@@ -112,6 +116,7 @@ func (d *Dao) GetProductSearchCache(searchBy string) ([]model.Product, error) {
 
 }
 
+// GetProductDetail 获取产品的详细信息：title, descriptions, product categories, product photos, and list of comments.
 func (d *Dao) GetProductDetail(productId uint) (*ProductDetail, error) {
 
 	// 1 获取product表内的所有信息
@@ -151,6 +156,7 @@ func (d *Dao) GetProductDetail(productId uint) (*ProductDetail, error) {
 
 }
 
+// GetProductCache 封装了获取产品表的缓存模块
 func (d *Dao) GetProductCache(productId uint) (*model.Product, error) {
 	// 1 缓存层
 
@@ -182,6 +188,7 @@ func (d *Dao) GetProductCache(productId uint) (*model.Product, error) {
 
 }
 
+// GetProductCommentInfoListCache 封装了获取产品评论的缓存模块
 func (d *Dao) GetProductCommentInfoListCache(productId uint) ([]model.CommentInfo, error) {
 
 	// 1 从数据库获取内容的函数
@@ -210,6 +217,13 @@ func (d *Dao) GetProductCommentInfoListCache(productId uint) ([]model.CommentInf
 
 }
 
+// GetProductBriefListCache
+// 该函数是对产品列表对缓存模块封装：
+// 逻辑是这样的 ：
+// 	1. 先用pageIndex和pageSize从数据库获取到对应的id list
+//  2. 后调用此方法
+//  3. 使用redis的mget获取到缓存的内容，如果不存在的键，那就使用loadFunction从数据库里面获取。
+//  测试了一下，使用此方法，并没有带来性能的显著提升，故没使用。
 func (d *Dao) GetProductBriefListCache(productIds ...uint) ([]*model.Product, error) {
 
 	// 从数据库获取model.Product的函数

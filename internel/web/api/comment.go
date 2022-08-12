@@ -15,6 +15,7 @@ func NewComment() *Comment {
 	return &Comment{}
 }
 
+// Detail 查看评论详情（里面包括对该评论对回复）
 func (cm *Comment) Detail(c *gin.Context) {
 	resp := response.NewResponse(c)
 
@@ -37,6 +38,7 @@ func (cm *Comment) Detail(c *gin.Context) {
 
 }
 
+// Create 对产品进行评论
 func (cm *Comment) Create(c *gin.Context) {
 	resp := response.NewResponse(c)
 
@@ -83,6 +85,7 @@ func (cm *Comment) Create(c *gin.Context) {
 
 }
 
+// Reply 对评论进行回复
 func (cm *Comment) Reply(c *gin.Context) {
 	resp := response.NewResponse(c)
 

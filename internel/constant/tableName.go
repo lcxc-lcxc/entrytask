@@ -1,5 +1,9 @@
 package constant
 
+/**
+存放表名
+*/
+
 var USER_TAB = "user_tab"
 var PRODUCT_TAB = "product_tab"
 var COMMENT_INFO_TAB = "comment_info_tab"

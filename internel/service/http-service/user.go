@@ -33,6 +33,9 @@ type AuthResponse struct {
 	Username string
 }
 
+// GetCleanErr
+// 由于 从grpc返回的错误都带有 rpc error = Unknown Desc = 前缀
+// 该函数就是删除这个前缀
 func GetCleanErr(err error) error {
 	if err == nil {
 		return err
@@ -43,6 +46,7 @@ func GetCleanErr(err error) error {
 	return errors.New(tmp2)
 }
 
+// UserRegister 负责调用grpc 的service
 func (svc *Service) UserRegister(request *UserRegisterRequest) (*UserRegisterResponse, error) {
 	_, err := svc.GetUserRpcClient().Register(svc.ctx, &pb.RegisterRequest{
 		Username: request.Username,
@@ -51,6 +55,7 @@ func (svc *Service) UserRegister(request *UserRegisterRequest) (*UserRegisterRes
 	return &UserRegisterResponse{}, GetCleanErr(err)
 }
 
+// UserLogin 负责调用grpc 的service
 func (svc *Service) UserLogin(request *UserLoginRequest) (*UserLoginResponse, error) {
 	loginReply, err := svc.GetUserRpcClient().Login(svc.ctx, &pb.LoginRequest{
 		Username: request.Username,
@@ -65,6 +70,7 @@ func (svc *Service) UserLogin(request *UserLoginRequest) (*UserLoginResponse, er
 	}, nil
 }
 
+// AuthUser 负责调用grpc 的service
 func (svc *Service) AuthUser(request *UserAuthRequest) (*AuthResponse, error) {
 	authReply, err := svc.GetUserRpcClient().Auth(svc.ctx, &pb.AuthRequest{
 		SessionId: request.SessionId,
@@ -81,6 +87,7 @@ func (svc *Service) AuthUser(request *UserAuthRequest) (*AuthResponse, error) {
 
 var rpcUserServiceClient pb.UserServiceClient
 
+// GetUserRpcClient 懒加载获取grpc的client
 func (svc *Service) GetUserRpcClient() pb.UserServiceClient {
 	if rpcUserServiceClient == nil {
 		rpcUserServiceClient = pb.NewUserServiceClient(svc.rpcClient)

@@ -22,6 +22,7 @@ var (
 )
 
 func init() {
+	//
 	cpuNum := runtime.NumCPU()
 	runtime.GOMAXPROCS(cpuNum - 1)
 	err := setupFlag()
@@ -111,7 +112,6 @@ func setupRPCClient() error {
 }
 
 func setupFlag() error {
-	//StringVar defines a string flag with specified name, default value, and usage string. The argument p points to a string variable in which to store the value of the flag.
 	flag.StringVar(&port, "port", "", "启动端口")
 	flag.StringVar(&mode, "mode", "", "启动模式")
 	flag.StringVar(&config, "config", "./config", "配置文件路径")
@@ -119,6 +119,7 @@ func setupFlag() error {
 	return nil
 }
 
+// setupSetting 使用viper读取配置文件，读取到的配置放在global包
 func setupSetting() error {
 	log.Printf("%v", config)
 	s, err := setting.NewSetting(strings.Split(config, ",")...)

@@ -1,5 +1,9 @@
 package constant
 
+/**
+存放一些查询字段
+*/
+
 var PAGE_INDEX string = "page_index"
 var PAGE_SIZE string = "page_size"
 

@@ -6,6 +6,10 @@ import (
 	"net/http"
 )
 
+/**
+    Response
+	统一的响应结果工具
+*/
 type Response struct {
 	Ctx *gin.Context
 }
@@ -19,6 +23,7 @@ func (r *Response) ResponseOK(data interface{}) {
 	r.Ctx.JSON(http.StatusOK, response)
 }
 
+// ResponseError 响应错误时，可带上具体的错误信息。也可不带，直接使用""
 func (r *Response) ResponseError(retcode int, data string) {
 
 	r.Ctx.JSON(GetStatusCode(retcode), gin.H{
@@ -27,6 +32,8 @@ func (r *Response) ResponseError(retcode int, data string) {
 		"data":    data,
 	})
 }
+
+// GetStatusCode 根据不同的retcode来决定不同的http状态码
 func GetStatusCode(retcode int) int {
 	switch {
 	case retcode == constant.ServerError.GetRetCode():

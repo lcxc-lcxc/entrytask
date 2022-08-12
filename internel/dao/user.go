@@ -11,6 +11,7 @@ import (
 	"time"
 )
 
+// CreateUser 创建用户
 func (d *Dao) CreateUser(username, password string) (*model.User, error) {
 	user := model.User{
 		Username: username,
@@ -31,6 +32,7 @@ func (d *Dao) GetUserByName(username string) (*model.User, error) {
 	return d.GetUserByNameCache(username)
 }
 
+// GetUserByNameCache 封装获取User的缓存模块
 func (d *Dao) GetUserByNameCache(username string) (*model.User, error) {
 
 	loadFunction := func(ctx context.Context, key any) (*model.User, error) {

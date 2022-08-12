@@ -7,6 +7,7 @@ import (
 	"google.golang.org/grpc"
 )
 
+// Service 对context和dao以及redis-client的封装，方便上层调用
 type Service struct {
 	ctx context.Context
 	dao *dao.Dao

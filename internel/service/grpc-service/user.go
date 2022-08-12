@@ -84,6 +84,7 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 	}, nil
 }
 
+// Auth 用于校验是否登录
 func (svc UserService) Auth(ctx context.Context, req *pb.AuthRequest) (*pb.AuthReply, error) {
 	cacheUserJson, err := svc.dao.RedisClient.Get(svc.ctx, constant.SESSION_ID+":"+req.SessionId).Result()
 	if err != nil {

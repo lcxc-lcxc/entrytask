@@ -24,6 +24,7 @@ type CommentDetail struct {
 	ReplyList      []CommentReplyBrief `json:"reply_list,omitempty"`
 }
 
+// GetCommentDetail 获取用户的评论详细信息（包含该评论的回复）
 func (d *Dao) GetCommentDetail(productId uint, commentId uint) (*CommentDetail, error) {
 
 	// 1 获取comment info
@@ -66,6 +67,7 @@ func (d *Dao) GetCommentDetail(productId uint, commentId uint) (*CommentDetail, 
 
 }
 
+// CreateCommentInfo 创建用户评论
 func (d *Dao) CreateCommentInfo(userId uint, username string, productId uint, content string) (uint, error) {
 	commentInfo := model.CommentInfo{
 		ProductId: productId,

@@ -11,6 +11,10 @@ import (
 	"time"
 )
 
+/**
+创建各种连接
+*/
+
 func NewRPCClient(setting *setting.RpcClientSetting) (*grpc.ClientConn, error) {
 	ctx := context.Background()
 	var opts []grpc.DialOption

@@ -1,5 +1,9 @@
 package constant
 
+/**
+存放错误码
+*/
+
 var (
 	Success = RetCode{0, "success"}
 

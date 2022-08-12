@@ -39,6 +39,7 @@ type CommentReplyResponse struct {
 	CommentReplyId uint `json:"comment_reply_id"`
 }
 
+// CommentDetail 查看评论以及评论的回复列表
 func (svc *Service) CommentDetail(request *CommentDetailRequest) (*CommentDetailResponse, error) {
 	commentDetail, err := svc.dao.GetCommentDetail(request.ProductId, request.CommentId)
 	if err != nil {
@@ -47,6 +48,7 @@ func (svc *Service) CommentDetail(request *CommentDetailRequest) (*CommentDetail
 	return &CommentDetailResponse{CommentDetail: commentDetail}, nil
 }
 
+// CommentCreate 进行评论
 func (svc *Service) CommentCreate(request *CommentCreateRequest) (*CommentCreateResponse, error) {
 	commentInfoId, err := svc.dao.CreateCommentInfo(request.UserId, request.Username, request.ProductId, request.Content)
 	if err != nil {
@@ -55,6 +57,7 @@ func (svc *Service) CommentCreate(request *CommentCreateRequest) (*CommentCreate
 	return &CommentCreateResponse{CommentId: commentInfoId}, nil
 }
 
+// CommentReply 进行回复
 func (svc *Service) CommentReply(request *CommentReplyRequest) (*CommentReplyResponse, error) {
 
 	replyId, err := svc.dao.CreateCommentReply(request.UserId, request.Username, request.ReplyToId, request.ReplyToName, request.ProductId, request.CommentId, request.ReplyContent)

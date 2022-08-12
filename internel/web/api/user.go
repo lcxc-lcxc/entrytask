@@ -15,6 +15,7 @@ func NewUser() *User {
 	return &User{}
 }
 
+// Register 用户注册
 func (u *User) Register(c *gin.Context) {
 	resp := response.NewResponse(c)
 	param := http_service.UserRegisterRequest{}
@@ -33,6 +34,7 @@ func (u *User) Register(c *gin.Context) {
 	resp.ResponseOK(userRegisterResp)
 }
 
+// Login 用户登录
 func (u *User) Login(c *gin.Context) {
 	resp := response.NewResponse(c)
 	param := http_service.UserLoginRequest{}

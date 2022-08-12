@@ -30,6 +30,7 @@ type ProductDetailResponse struct {
 	ProductDetail *dao.ProductDetail
 }
 
+// ProductList 查看产品列表
 func (svc *Service) ProductList(request *ProductListRequest) (*ProductListResponse, error) {
 	productBriefList, err := svc.dao.GetProductBriefList(request.PageIndex, request.PageSize)
 	if err != nil {
@@ -45,6 +46,7 @@ func (svc *Service) ProductList(request *ProductListRequest) (*ProductListRespon
 	}, nil
 }
 
+// ProductSearch 进行产品搜索
 func (svc *Service) ProductSearch(request *ProductSearchRequest) (*ProductSearchResponse, error) {
 	productSearch, err := svc.dao.GetProductSearch(request.SearchBy)
 	if err != nil {
@@ -56,6 +58,7 @@ func (svc *Service) ProductSearch(request *ProductSearchRequest) (*ProductSearch
 
 }
 
+// ProductDetail 查看产品详情
 func (svc *Service) ProductDetail(request *ProductDetailRequest) (*ProductDetailResponse, error) {
 
 	productDetail, err := svc.dao.GetProductDetail(request.ProductId)

@@ -6,6 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+/**
+router
+*/
+
 func NewRouter() *gin.Engine {
 	router := gin.Default()
 

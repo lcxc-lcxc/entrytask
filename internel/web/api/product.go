@@ -15,6 +15,7 @@ func NewProduct() *Product {
 	return &Product{}
 }
 
+// List 查看产品列表
 func (p *Product) List(c *gin.Context) {
 	resp := response.NewResponse(c)
 	var param http_service.ProductListRequest
@@ -36,6 +37,7 @@ func (p *Product) List(c *gin.Context) {
 	resp.ResponseOK(productListResponse)
 }
 
+// Search 搜索产品
 func (p *Product) Search(c *gin.Context) {
 	resp := response.NewResponse(c)
 
@@ -54,6 +56,7 @@ func (p *Product) Search(c *gin.Context) {
 
 }
 
+// Detail 查看产品详情
 func (p *Product) Detail(c *gin.Context) {
 	resp := response.NewResponse(c)
 	productId := cast.ToUint(c.Param(constant.PRODUCT_ID))
