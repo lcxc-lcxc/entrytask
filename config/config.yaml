@@ -15,20 +15,20 @@ Redis:
   DBIndex: 0
 
 RpcClient:
-  RPCHost: localhost:8081
+  RPCHost: localhost:8001
   connNum: 20
 
 HttpServer:
   Mode: debug
   Host: localhost
-  Port: 8080
+  Port: 8000
   ReadTimeout: 60
   WriteTimeout: 60
 
 RpcServer:
   Mode: debug
   Host: localhost
-  Port: 8081
+  Port: 8001
   ReadTimeout: 60
   WriteTimeout: 60
 
