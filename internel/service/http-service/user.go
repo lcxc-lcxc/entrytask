@@ -34,6 +34,9 @@ type AuthResponse struct {
 }
 
 func GetCleanErr(err error) error {
+	if err == nil {
+		return err
+	}
 	errStr := err.Error()
 	tmp1 := errStr[strings.Index(errStr, "=")+1 : len(errStr)]
 	tmp2 := tmp1[strings.Index(tmp1, "=")+1 : len(tmp1)]
