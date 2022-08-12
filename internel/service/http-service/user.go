@@ -2,6 +2,8 @@ package http_service
 
 import (
 	pb "entrytask/internel/proto"
+	"errors"
+	"strings"
 )
 
 type UserRegisterRequest struct {
@@ -31,12 +33,19 @@ type AuthResponse struct {
 	Username string
 }
 
+func GetCleanErr(err error) error {
+	errStr := err.Error()
+	tmp1 := errStr[strings.Index(errStr, "=")+1 : len(errStr)]
+	tmp2 := tmp1[strings.Index(tmp1, "=")+1 : len(tmp1)]
+	return errors.New(tmp2)
+}
+
 func (svc *Service) UserRegister(request *UserRegisterRequest) (*UserRegisterResponse, error) {
 	_, err := svc.GetUserRpcClient().Register(svc.ctx, &pb.RegisterRequest{
 		Username: request.Username,
 		Password: request.Password,
 	})
-	return &UserRegisterResponse{}, err
+	return &UserRegisterResponse{}, GetCleanErr(err)
 }
 
 func (svc *Service) UserLogin(request *UserLoginRequest) (*UserLoginResponse, error) {
@@ -45,7 +54,7 @@ func (svc *Service) UserLogin(request *UserLoginRequest) (*UserLoginResponse, er
 		Password: request.Password,
 	})
 	if err != nil {
-		return nil, err
+		return nil, GetCleanErr(err)
 	}
 	return &UserLoginResponse{
 		Username:  loginReply.Username,
@@ -58,7 +67,7 @@ func (svc *Service) AuthUser(request *UserAuthRequest) (*AuthResponse, error) {
 		SessionId: request.SessionId,
 	})
 	if err != nil {
-		return nil, err
+		return nil, GetCleanErr(err)
 	}
 	return &AuthResponse{
 		UserID:   uint(authReply.ID),

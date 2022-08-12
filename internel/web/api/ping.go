@@ -24,7 +24,7 @@ func (p Ping) Ping(c *gin.Context) {
 	param := PingRequest{}
 	err := c.ShouldBind(&param)
 	if err != nil {
-		resp.ResponseError(constant.ServerError.GetRetCode())
+		resp.ResponseError(constant.ServerError.GetRetCode(), "")
 		return
 	}
 

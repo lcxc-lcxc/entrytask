@@ -9,7 +9,6 @@ import (
 	pb "entrytask/internel/proto"
 	"entrytask/pkg/utils"
 	"errors"
-	"fmt"
 	"github.com/google/uuid"
 	"gorm.io/gorm"
 	"log"
@@ -35,14 +34,14 @@ func (svc UserService) Register(ctx context.Context, req *pb.RegisterRequest) (*
 
 	if err == nil || !errors.Is(gorm.ErrRecordNotFound, err) { //代表找到数据
 
-		return nil, fmt.Errorf("Register : user already exists")
+		return nil, errors.New("用户名已存在")
 	}
 
 	hash := utils.Hash(req.Password)
 	_, err = svc.dao.CreateUser(req.Username, hash)
 	if err != nil {
 		log.Printf("Register : create user failed: %v", err)
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	return &pb.RegisterReply{}, nil
 
@@ -52,12 +51,12 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 	//1 从数据库获取user
 	dbUser, err := svc.dao.GetUserByName(req.Username)
 	if err != nil { //用户不存在或其他错误
-		return nil, err
+		return nil, errors.New("用户名不存在")
 	}
 	//2 校验数据库里面的密码和输入的密码
 	verify := utils.HashVerify(dbUser.Password, req.Password)
 	if !verify { //密码错误
-		return nil, err
+		return nil, errors.New("密码错误，请重新输入")
 	}
 	// 3 生成缓存的结构
 	cacheUser := pb.AuthReply{
@@ -67,7 +66,7 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 	cacheUserJson, err := json.Marshal(cacheUser)
 	if err != nil {
 		log.Printf("cache session_id failed : %v", err)
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	// 4 生成session_id并存进redis
 	sessionId := uuid.NewString()
@@ -75,7 +74,7 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 	err = svc.dao.RedisClient.Set(svc.ctx, constant.SESSION_ID+":"+sessionId, string(cacheUserJson), time.Hour).Err()
 	if err != nil {
 		log.Printf("cache session_id failed : %v", err)
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 
 	//5 返回
@@ -89,13 +88,13 @@ func (svc UserService) Auth(ctx context.Context, req *pb.AuthRequest) (*pb.AuthR
 	cacheUserJson, err := svc.dao.RedisClient.Get(svc.ctx, constant.SESSION_ID+":"+req.SessionId).Result()
 	if err != nil {
 		log.Println("auth failed : get redis session message failed")
-		return nil, err
+		return nil, errors.New("请登录")
 	}
 	var authReply pb.AuthReply
 	err = json.Unmarshal([]byte(cacheUserJson), &authReply)
 	if err != nil {
 		log.Println("auth failed : unmarshal session message failed")
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	return &authReply, nil
 

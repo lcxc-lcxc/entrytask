@@ -19,11 +19,12 @@ func (r *Response) ResponseOK(data interface{}) {
 	r.Ctx.JSON(http.StatusOK, response)
 }
 
-func (r *Response) ResponseError(retcode int) {
+func (r *Response) ResponseError(retcode int, data string) {
 
 	r.Ctx.JSON(GetStatusCode(retcode), gin.H{
 		"retcode": retcode,
 		"msg":     constant.RetcodeMap[retcode].GetMsg(),
+		"data":    data,
 	})
 }
 func GetStatusCode(retcode int) int {

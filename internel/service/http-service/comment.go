@@ -2,6 +2,7 @@ package http_service
 
 import (
 	"entrytask/internel/dao"
+	"errors"
 )
 
 type CommentDetailRequest struct {
@@ -41,7 +42,7 @@ type CommentReplyResponse struct {
 func (svc *Service) CommentDetail(request *CommentDetailRequest) (*CommentDetailResponse, error) {
 	commentDetail, err := svc.dao.GetCommentDetail(request.ProductId, request.CommentId)
 	if err != nil {
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	return &CommentDetailResponse{CommentDetail: commentDetail}, nil
 }
@@ -49,7 +50,7 @@ func (svc *Service) CommentDetail(request *CommentDetailRequest) (*CommentDetail
 func (svc *Service) CommentCreate(request *CommentCreateRequest) (*CommentCreateResponse, error) {
 	commentInfoId, err := svc.dao.CreateCommentInfo(request.UserId, request.Username, request.ProductId, request.Content)
 	if err != nil {
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	return &CommentCreateResponse{CommentId: commentInfoId}, nil
 }
@@ -58,7 +59,7 @@ func (svc *Service) CommentReply(request *CommentReplyRequest) (*CommentReplyRes
 
 	replyId, err := svc.dao.CreateCommentReply(request.UserId, request.Username, request.ReplyToId, request.ReplyToName, request.ProductId, request.CommentId, request.ReplyContent)
 	if err != nil {
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	return &CommentReplyResponse{CommentReplyId: replyId}, nil
 

@@ -15,7 +15,7 @@ func AuthSessionID(c *gin.Context) {
 	sessionId, err := c.Cookie(constant.SESSION_ID)
 	if err != nil || sessionId == "" {
 		// 没有session_id意味着没有登录
-		response.NewResponse(c).ResponseError(constant.UserLoginRequired.GetRetCode())
+		response.NewResponse(c).ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
 		c.Abort()
 		return
 	}
@@ -28,14 +28,14 @@ func AuthUserLogin(c *gin.Context) {
 	sessionId, err := c.Cookie(constant.SESSION_ID)
 	if err != nil || sessionId == "" {
 		// 没有session_id意味着没有登录
-		response.NewResponse(c).ResponseError(constant.UserLoginRequired.GetRetCode())
+		response.NewResponse(c).ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
 		c.Abort()
 		return
 	}
 	service := http_service.NewService(c.Request.Context())
 	authResponse, err := service.AuthUser(&http_service.UserAuthRequest{SessionId: sessionId})
 	if err != nil {
-		response.NewResponse(c).ResponseError(constant.SessionError.GetRetCode())
+		response.NewResponse(c).ResponseError(constant.SessionError.GetRetCode(), err.Error())
 		c.Abort()
 		return
 	}

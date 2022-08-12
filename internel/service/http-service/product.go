@@ -2,6 +2,7 @@ package http_service
 
 import (
 	"entrytask/internel/dao"
+	"errors"
 )
 
 type ProductListRequest struct {
@@ -32,11 +33,11 @@ type ProductDetailResponse struct {
 func (svc *Service) ProductList(request *ProductListRequest) (*ProductListResponse, error) {
 	productBriefList, err := svc.dao.GetProductBriefList(request.PageIndex, request.PageSize)
 	if err != nil {
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	count, err := svc.dao.GetProductCount()
 	if err != nil {
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	return &ProductListResponse{
 		ProductList:  productBriefList,
@@ -47,7 +48,7 @@ func (svc *Service) ProductList(request *ProductListRequest) (*ProductListRespon
 func (svc *Service) ProductSearch(request *ProductSearchRequest) (*ProductSearchResponse, error) {
 	productSearch, err := svc.dao.GetProductSearch(request.SearchBy)
 	if err != nil {
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	return &ProductSearchResponse{
 		ProductSearchList: productSearch,
@@ -60,7 +61,7 @@ func (svc *Service) ProductDetail(request *ProductDetailRequest) (*ProductDetail
 	productDetail, err := svc.dao.GetProductDetail(request.ProductId)
 
 	if err != nil {
-		return nil, err
+		return nil, errors.New("未知错误")
 	}
 	return &ProductDetailResponse{
 		ProductDetail: productDetail,

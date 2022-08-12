@@ -20,7 +20,7 @@ func (cm *Comment) Detail(c *gin.Context) {
 
 	productId, commentId := cast.ToUint(c.Param(constant.PRODUCT_ID)), cast.ToUint(c.Param(constant.COMMENT_ID))
 	if productId == 0 || commentId == 0 {
-		resp.ResponseError(constant.InvalidParams.GetRetCode())
+		resp.ResponseError(constant.InvalidParams.GetRetCode(), "校验失败")
 		return
 	}
 	param := &http_service.CommentDetailRequest{
@@ -30,7 +30,7 @@ func (cm *Comment) Detail(c *gin.Context) {
 	service := http_service.NewService(c.Request.Context())
 	commentDetailResponse, err := service.CommentDetail(param)
 	if err != nil {
-		resp.ResponseError(constant.CommentDetailGetFailed.GetRetCode())
+		resp.ResponseError(constant.CommentDetailGetFailed.GetRetCode(), err.Error())
 		return
 	}
 	resp.ResponseOK(commentDetailResponse)
@@ -44,20 +44,20 @@ func (cm *Comment) Create(c *gin.Context) {
 	usernameAny, usernameExists := c.Get(constant.USERNAME)
 	userIdAny, userIdExists := c.Get(constant.USER_ID)
 	if !usernameExists || !userIdExists {
-		resp.ResponseError(constant.UserLoginRequired.GetRetCode())
+		resp.ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
 		return
 	}
 	userId := cast.ToUint(userIdAny)
 	username := cast.ToString(usernameAny)
 	if userId == 0 || username == "" {
-		resp.ResponseError(constant.UserLoginRequired.GetRetCode())
+		resp.ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
 		return
 	}
 
 	// 2 获取产品id
 	productId := cast.ToUint(c.Param(constant.PRODUCT_ID))
 	if productId == 0 {
-		resp.ResponseError(constant.InvalidParams.GetRetCode())
+		resp.ResponseError(constant.InvalidParams.GetRetCode(), "校验失败")
 		return
 	}
 
@@ -65,7 +65,7 @@ func (cm *Comment) Create(c *gin.Context) {
 	param := http_service.CommentCreateRequest{}
 	err := c.ShouldBind(&param)
 	if err != nil {
-		resp.ResponseError(constant.InvalidParams.GetRetCode())
+		resp.ResponseError(constant.InvalidParams.GetRetCode(), "校验失败")
 		return
 	}
 	param.UserId = userId
@@ -76,7 +76,7 @@ func (cm *Comment) Create(c *gin.Context) {
 	service := http_service.NewService(c.Request.Context())
 	commentCreateResponse, err := service.CommentCreate(&param)
 	if err != nil {
-		resp.ResponseError(constant.CommentCreateFailed.GetRetCode())
+		resp.ResponseError(constant.CommentCreateFailed.GetRetCode(), err.Error())
 		return
 	}
 	resp.ResponseOK(commentCreateResponse)
@@ -90,13 +90,13 @@ func (cm *Comment) Reply(c *gin.Context) {
 	usernameAny, usernameExists := c.Get(constant.USERNAME)
 	userIdAny, userIdExists := c.Get(constant.USER_ID)
 	if !usernameExists || !userIdExists {
-		resp.ResponseError(constant.UserLoginRequired.GetRetCode())
+		resp.ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
 		return
 	}
 	userId := cast.ToUint(userIdAny)
 	username := cast.ToString(usernameAny)
 	if userId == 0 || username == "" {
-		resp.ResponseError(constant.UserLoginRequired.GetRetCode())
+		resp.ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
 		return
 	}
 
@@ -104,7 +104,7 @@ func (cm *Comment) Reply(c *gin.Context) {
 	productId := cast.ToUint(c.Param(constant.PRODUCT_ID))
 	commentId := cast.ToUint(c.Param(constant.COMMENT_ID))
 	if productId == 0 || commentId == 0 {
-		resp.ResponseError(constant.InvalidParams.GetRetCode())
+		resp.ResponseError(constant.InvalidParams.GetRetCode(), "校验失败")
 		return
 	}
 
@@ -112,7 +112,7 @@ func (cm *Comment) Reply(c *gin.Context) {
 	param := http_service.CommentReplyRequest{}
 	err := c.ShouldBind(&param)
 	if err != nil {
-		resp.ResponseError(constant.InvalidParams.GetRetCode())
+		resp.ResponseError(constant.InvalidParams.GetRetCode(), "校验失败")
 		return
 	}
 
@@ -126,7 +126,7 @@ func (cm *Comment) Reply(c *gin.Context) {
 	commentReplyResponse, err := service.CommentReply(&param)
 
 	if err != nil {
-		resp.ResponseError(constant.CommentReplyCreateFailed.GetRetCode())
+		resp.ResponseError(constant.CommentReplyCreateFailed.GetRetCode(), err.Error())
 		return
 	}
 	resp.ResponseOK(commentReplyResponse)

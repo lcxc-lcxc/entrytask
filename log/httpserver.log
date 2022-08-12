@@ -218,3 +218,32 @@
 2022/08/12 10:15:44 product.go:158: get product cache failed , getting data from database 
 2022/08/12 10:15:44 product.go:189: get product comment cache failed , getting data from database 
 2022/08/12 10:15:51 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = Register : user already exists
+2022/08/12 10:27:08 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 10:30:22 user.go:46: service UserLogin Failed : rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+2022/08/12 10:31:33 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = Register : user already exists
+2022/08/12 11:09:50 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:09:54 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = 用户名已存在
+2022/08/12 11:11:37 user.go:29: service UserRegister Failed : rpc error: code = Unknown desc = 用户名已存在
+2022/08/12 11:11:45 user.go:46: service UserLogin Failed : rpc error: code = Unknown desc = 密码错误，请重新输入
+2022/08/12 11:24:32 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:24:42 user.go:29: service UserRegister Failed : = Unknown desc = �
+2022/08/12 11:25:17 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:25:19 user.go:29: service UserRegister Failed :  Unknown desc = �
+2022/08/12 11:25:55 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:26:24 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:26:25 user.go:29: service UserRegister Failed :  = Unknown desc = �
+2022/08/12 11:26:26 user.go:29: service UserRegister Failed :  = Unknown desc = �
+2022/08/12 11:26:27 user.go:29: service UserRegister Failed :  = Unknown desc = �
+2022/08/12 11:26:36 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:26:39 user.go:29: service UserRegister Failed :  = Unknown desc = �
+2022/08/12 11:26:45 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:27:06 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:27:08 user.go:29: service UserRegister Failed :  用户名已存在
+2022/08/12 11:27:15 user.go:46: service UserLogin Failed :  密码错误，请重新输入
+2022/08/12 11:27:51 main.go:168: Starting HTTP Server , Listening :8000 
+2022/08/12 11:27:54 user.go:29: service UserRegister Failed :  用户名已存在
+2022/08/12 11:28:37 product.go:94: get product search cache failed , getting data from database 
+2022/08/12 11:28:41 product.go:94: get product search cache failed , getting data from database 
+2022/08/12 11:28:47 product.go:158: get product cache failed , getting data from database 
+2022/08/12 11:28:47 product.go:189: get product comment cache failed , getting data from database 
+2022/08/12 11:29:55 user.go:29: service UserRegister Failed :  用户名已存在
