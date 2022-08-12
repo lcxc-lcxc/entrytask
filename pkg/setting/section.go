@@ -1,8 +1,3 @@
-/**
- @author: 15973
- @date: 2022/07/16
- @note:
-**/
 package setting
 
 import "time"
