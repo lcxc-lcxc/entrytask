@@ -35,8 +35,14 @@ message AuthRequest{
   string session_id = 1;
 }
 message AuthReply{
-  uint64 ID = 1;
+  int64 ID = 1;
   string username = 2;
 }
 
 
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative internel/proto/user.proto
+// go_out 代表要输出到的目录
+// source_relative代表按原来的目录结构输出，比如：
+//        message/message.proto和hello/hello.proto就会在go_out指定的目录下生成
+//        message/message.pb.go和hello/hello.pb.go
+//

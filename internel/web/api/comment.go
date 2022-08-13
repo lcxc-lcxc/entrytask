@@ -49,7 +49,7 @@ func (cm *Comment) Create(c *gin.Context) {
 		resp.ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
 		return
 	}
-	userId := cast.ToUint(userIdAny)
+	userId := cast.ToInt64(userIdAny)
 	username := cast.ToString(usernameAny)
 	if userId == 0 || username == "" {
 		resp.ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
@@ -96,7 +96,7 @@ func (cm *Comment) Reply(c *gin.Context) {
 		resp.ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")
 		return
 	}
-	userId := cast.ToUint(userIdAny)
+	userId := cast.ToInt64(userIdAny)
 	username := cast.ToString(usernameAny)
 	if userId == 0 || username == "" {
 		resp.ResponseError(constant.UserLoginRequired.GetRetCode(), "请登录")

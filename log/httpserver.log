@@ -12,3 +12,84 @@
 2022/08/12 11:50:00 user.go:29: service UserRegister Failed :  用户名已存在
 2022/08/12 11:50:02 user.go:29: service UserRegister Failed :  用户名已存在
 2022/08/12 11:50:19 user.go:46: service UserLogin Failed :  密码错误，请重新输入
+2022/08/12 16:20:43 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/12 16:20:45 user.go:48: service UserLogin Failed :  密码错误，请重新输入
+2022/08/12 16:20:56 product.go:98: get product search cache failed , getting data from database 
+2022/08/12 16:20:58 product.go:164: get product cache failed , getting data from database 
+2022/08/12 16:20:58 product.go:196: get product comment cache failed , getting data from database 
+2022/08/12 16:21:03 product.go:164: get product cache failed , getting data from database 
+2022/08/12 16:21:03 product.go:196: get product comment cache failed , getting data from database 
+2022/08/12 16:30:11 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/12 16:31:34 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/12 16:33:16 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/12 16:33:33 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/12 16:34:27 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/12 16:35:35 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/12 16:40:48 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 15:17:56 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 15:22:47 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 15:24:14 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 15:25:34 user.go:30: service UserRegister Failed :  未知错误
+2022/08/13 15:27:41 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 15:29:21 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 15:32:40 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 15:35:47 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 15:35:55 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 15:37:05 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 15:37:16 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 15:39:05 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 15:40:03 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 15:41:20 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 15:59:03 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 16:00:26 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 16:00:59 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 16:01:37 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 16:01:58 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 16:03:07 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 16:07:56 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 16:09:00 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 16:09:32 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 16:10:39 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 16:13:18 user.go:48: service UserLogin Failed :  用户名不存在
+2022/08/13 16:13:39 user.go:48: service UserLogin Failed :  用户名不存在
+2022/08/13 16:13:45 user.go:48: service UserLogin Failed :  用户名不存在
+2022/08/13 16:15:35 user.go:48: service UserLogin Failed :  context canceled
+2022/08/13 16:17:12 user.go:48: service UserLogin Failed :  context canceled
+2022/08/13 16:19:07 user.go:48: service UserLogin Failed :  密码错误，请重新输入
+2022/08/13 16:20:19 user.go:48: service UserLogin Failed :  密码错误，请重新输入
+2022/08/13 16:20:38 user.go:48: service UserLogin Failed :  密码错误，请重新输入
+2022/08/13 16:21:26 user.go:48: service UserLogin Failed :  密码错误，请重新输入
+2022/08/13 16:23:23 user.go:48: service UserLogin Failed :  context canceled
+2022/08/13 16:30:07 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 16:30:40 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 16:32:46 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 16:34:16 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 16:36:47 user.go:48: service UserLogin Failed :  context canceled
+2022/08/13 16:37:56 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 16:38:50 user.go:48: service UserLogin Failed :  用户名不存在
+2022/08/13 16:38:54 user.go:48: service UserLogin Failed :  密码错误，请重新输入
+2022/08/13 16:39:09 product.go:98: get product search cache failed , getting data from database 
+2022/08/13 16:39:11 product.go:164: get product cache failed , getting data from database 
+2022/08/13 16:39:11 product.go:196: get product comment cache failed , getting data from database 
+2022/08/13 16:39:17 commentInfo.go:40: insert comment info failed
+2022/08/13 16:39:20 commentInfo.go:40: insert comment info failed
+2022/08/13 16:39:20 commentInfo.go:40: insert comment info failed
+2022/08/13 16:39:26 commentReply.go:33: create comment reply failed
+2022/08/13 17:44:53 user.go:48: service UserLogin Failed :  connection error: desc = "transport: Error while dialing dial tcp [::1]:8001: connect: connection refused"
+2022/08/13 17:46:27 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 17:47:51 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 17:49:05 commentInfo.go:40: insert comment info failed
+2022/08/13 17:55:57 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 17:56:33 product.go:98: get product search cache failed , getting data from database 
+2022/08/13 18:00:11 commentInfo.go:31: get comment info failed
+2022/08/13 18:00:16 commentInfo.go:31: get comment info failed
+2022/08/13 18:00:22 product.go:164: get product cache failed , getting data from database 
+2022/08/13 18:00:22 product.go:196: get product comment cache failed , getting data from database 
+2022/08/13 18:00:25 commentInfo.go:31: get comment info failed
+2022/08/13 18:00:37 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 18:01:22 commentInfo.go:31: get comment info failed
+2022/08/13 18:05:01 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 18:05:14 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 18:05:19 user.go:48: service UserLogin Failed :  密码错误，请重新输入
+2022/08/13 18:05:23 user.go:48: service UserLogin Failed :  用户名不存在
+2022/08/13 18:05:41 product.go:164: get product cache failed , getting data from database 

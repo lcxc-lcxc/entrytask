@@ -8,7 +8,7 @@ import (
 
 type CommentInfo struct {
 	ProductId uint
-	FromId    uint
+	FromId    int64
 	FromName  string
 	Content   string
 	gorm.Model
@@ -26,13 +26,12 @@ func (c CommentInfo) SelectCommentInfoList(db *gorm.DB, productId uint) ([]Comme
 }
 
 func (c CommentInfo) SelectCommentInfo(db *gorm.DB) (*CommentInfo, error) {
-	var commentInfo CommentInfo
-	err := db.Model(&c).First(&commentInfo).Error
+	err := db.First(&c, c.ID).Error
 	if err != nil {
 		log.Println("get comment info failed")
 		return nil, err
 	}
-	return &commentInfo, nil
+	return &c, nil
 }
 
 func (c CommentInfo) CreateCommentInfo(db *gorm.DB) (*CommentInfo, error) {

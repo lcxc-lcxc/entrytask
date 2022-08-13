@@ -9,6 +9,7 @@ import (
 	"entrytask/pkg/setting"
 	"flag"
 	"fmt"
+	"github.com/bwmarrin/snowflake"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -116,6 +117,10 @@ func setupDBEngine() error {
 	if err != nil {
 		log.Println("Set up DBEngine fail")
 		return err
+	}
+	global.SnowFlakeNode1, err = snowflake.NewNode(1)
+	if err != nil {
+		log.Println("Set up SnowFlakeNode 1 failed")
 	}
 	log.Println("Set up DBEngine Success")
 	return nil

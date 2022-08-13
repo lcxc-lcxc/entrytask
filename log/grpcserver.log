@@ -15,3 +15,46 @@
 2022/08/12 11:48:41 user.go:37: get username cache failed , getting data from database 
 2022/08/12 11:50:00 user.go:37: get username cache failed , getting data from database 
 2022/08/12 11:50:04 user.go:37: get username cache failed , getting data from database 
+2022/08/12 16:20:45 user.go:39: get username cache failed , getting data from database 
+2022/08/13 15:21:52 user.go:39: get username cache failed , getting data from database 
+2022/08/13 15:23:09 user.go:32: Insert UserIndex tab failed 
+2022/08/13 15:23:09 user.go:43: Register : create user failed: Error 1054: Unknown column 'user_id' in 'field list'
+2022/08/13 15:23:14 user.go:39: get username cache failed , getting data from database 
+2022/08/13 15:25:21 user.go:39: get username cache failed , getting data from database 
+2022/08/13 15:25:29 user.go:32: Insert UserIndex tab failed 
+2022/08/13 15:25:34 user.go:43: Register : create user failed: Error 1062: Duplicate entry 'laoyanjie215' for key 'user_index_tab.PRIMARY'
+2022/08/13 15:26:41 user.go:39: get username cache failed , getting data from database 
+2022/08/13 15:28:21 user.go:39: get username cache failed , getting data from database 
+2022/08/13 15:35:47 user.go:36: get username cache failed , getting data from database 
+2022/08/13 15:35:55 user.go:36: get username cache failed , getting data from database 
+2022/08/13 15:37:05 user.go:36: get username cache failed , getting data from database 
+2022/08/13 15:37:16 user.go:36: get username cache failed , getting data from database 
+2022/08/13 15:37:36 user.go:36: get username cache failed , getting data from database 
+2022/08/13 15:39:16 user.go:36: get username cache failed , getting data from database 
+2022/08/13 15:40:23 user.go:36: get username cache failed , getting data from database 
+2022/08/13 15:59:31 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:01:06 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:01:58 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:02:10 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:08:03 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:09:41 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:12:33 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:13:18 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:13:37 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:13:39 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:13:45 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:14:44 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:16:14 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:19:03 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:22:59 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:30:30 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:31:50 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:34:34 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:36:16 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:37:36 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:38:37 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:38:43 user.go:36: get username cache failed , getting data from database 
+2022/08/13 16:38:50 user.go:36: get username cache failed , getting data from database 
+2022/08/13 17:46:45 user.go:36: get username cache failed , getting data from database 
+2022/08/13 18:05:10 user.go:36: get username cache failed , getting data from database 
+2022/08/13 18:05:23 user.go:36: get username cache failed , getting data from database 

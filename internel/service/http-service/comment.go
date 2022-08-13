@@ -15,7 +15,7 @@ type CommentDetailResponse struct {
 }
 
 type CommentCreateRequest struct {
-	UserId    uint   `binding:"-"`
+	UserId    int64  `binding:"-"`
 	Username  string `binding:"-"`
 	ProductId uint   `binding:"-"`
 	Content   string `json:"comment_content" form:"comment_content" binding:"required,max=512"`
@@ -26,11 +26,11 @@ type CommentCreateResponse struct {
 }
 
 type CommentReplyRequest struct {
-	UserId       uint   `binding:"-"`
+	UserId       int64  `binding:"-"`
 	Username     string `binding:"-"`
 	ProductId    uint   `binding:"-"`
 	CommentId    uint   `binding:"-"`
-	ReplyToId    uint   `json:"reply_to_id" form:"reply_to_id" binding:"required"`
+	ReplyToId    int64  `json:"reply_to_id" form:"reply_to_id" binding:"required"`
 	ReplyToName  string `json:"reply_to_name" form:"reply_to_name" binding:"required,max=32"`
 	ReplyContent string `json:"reply_content" form:"reply_content" binding:"required,max=512"`
 }

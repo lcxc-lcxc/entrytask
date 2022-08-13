@@ -6,7 +6,6 @@ import (
 	"entrytask/internel/dao/cache"
 	"entrytask/internel/model"
 	"entrytask/pkg/utils"
-	"gorm.io/gorm"
 	"log"
 	"time"
 )
@@ -14,12 +13,10 @@ import (
 // CreateUser 创建用户
 func (d *Dao) CreateUser(username, password string) (*model.User, error) {
 	user := model.User{
-		Username: username,
-		Password: password,
-		Model: gorm.Model{
-			CreatedAt: time.Now(),
-			UpdatedAt: time.Now(),
-		},
+		Username:  username,
+		Password:  password,
+		CreatedAt: time.Now(),
+		UpdatedAt: time.Now(),
 	}
 
 	return user.CreateUser(d.engine)

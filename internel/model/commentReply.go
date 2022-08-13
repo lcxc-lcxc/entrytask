@@ -8,9 +8,9 @@ import (
 
 type CommentReply struct {
 	CommentId     uint
-	ReplyToId     uint
+	ReplyToId     int64
 	ReplyToName   string
-	ReplyFromId   uint
+	ReplyFromId   int64
 	ReplyFromName string
 	Content       string
 	gorm.Model

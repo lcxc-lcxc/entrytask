@@ -60,7 +60,7 @@ func (svc UserService) Login(ctx context.Context, req *pb.LoginRequest) (*pb.Log
 	}
 	// 3 生成缓存的结构
 	cacheUser := pb.AuthReply{
-		ID:       uint64(dbUser.ID),
+		ID:       dbUser.UserId,
 		Username: dbUser.Username,
 	}
 	cacheUserJson, err := json.Marshal(cacheUser)

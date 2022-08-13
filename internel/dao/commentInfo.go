@@ -5,6 +5,7 @@ import (
 	"entrytask/internel/constant"
 	"entrytask/internel/model"
 	"entrytask/pkg/utils"
+	"errors"
 	"gorm.io/gorm"
 	"time"
 )
@@ -18,6 +19,7 @@ type CommentBrief struct {
 
 type CommentDetail struct {
 	CommentId      uint                `json:"comment_id"`
+	ProductId      uint                `json:"product_id"`
 	FromName       string              `json:"from_name"`
 	CommentContent string              `json:"comment_content"`
 	CreatedAt      time.Time           `json:"created_at"`
@@ -37,6 +39,9 @@ func (d *Dao) GetCommentDetail(productId uint, commentId uint) (*CommentDetail, 
 	if err != nil {
 		return nil, err
 	}
+	if commentInfo.ProductId != productId { //说明当前评论并不属于productId
+		return nil, errors.New("")
+	}
 
 	// 2 获取 reply 列表
 	r := model.CommentReply{}
@@ -48,6 +53,7 @@ func (d *Dao) GetCommentDetail(productId uint, commentId uint) (*CommentDetail, 
 	// 3 组装数据
 	commentDetail := &CommentDetail{
 		CommentId:      commentInfo.ID,
+		ProductId:      commentInfo.ProductId,
 		FromName:       commentInfo.FromName,
 		CommentContent: commentInfo.Content,
 		CreatedAt:      commentInfo.CreatedAt,
@@ -68,7 +74,7 @@ func (d *Dao) GetCommentDetail(productId uint, commentId uint) (*CommentDetail, 
 }
 
 // CreateCommentInfo 创建用户评论
-func (d *Dao) CreateCommentInfo(userId uint, username string, productId uint, content string) (uint, error) {
+func (d *Dao) CreateCommentInfo(userId int64, username string, productId uint, content string) (uint, error) {
 	commentInfo := model.CommentInfo{
 		ProductId: productId,
 		FromId:    userId,
