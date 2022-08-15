@@ -93,3 +93,171 @@
 2022/08/13 18:05:19 user.go:48: service UserLogin Failed :  密码错误，请重新输入
 2022/08/13 18:05:23 user.go:48: service UserLogin Failed :  用户名不存在
 2022/08/13 18:05:41 product.go:164: get product cache failed , getting data from database 
+2022/08/13 18:16:34 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 18:17:18 user.go:30: service UserRegister Failed :  未知错误
+2022/08/13 18:18:17 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 18:19:33 user.go:30: service UserRegister Failed :  未知错误
+2022/08/13 18:20:41 user.go:30: service UserRegister Failed :  context canceled
+2022/08/13 18:23:15 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 18:24:33 user.go:48: service UserLogin Failed :  用户名不存在
+2022/08/13 18:24:37 user.go:48: service UserLogin Failed :  密码错误，请重新输入
+2022/08/13 18:24:39 user.go:48: service UserLogin Failed :  用户名不存在
+2022/08/13 18:24:51 product.go:98: get product search cache failed , getting data from database 
+2022/08/13 18:24:53 product.go:164: get product cache failed , getting data from database 
+2022/08/13 18:24:53 product.go:196: get product comment cache failed , getting data from database 
+2022/08/13 18:26:43 product.go:164: get product cache failed , getting data from database 
+2022/08/13 18:27:08 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 18:31:52 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 18:45:52 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 18:46:00 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 18:46:09 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 18:52:31 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/13 18:53:49 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:22 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:10:23 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:31 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:32 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:33 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:16:34 user.go:30: service UserRegister Failed :  用户名已存在
+2022/08/13 19:34:40 product.go:164: get product cache failed , getting data from database 
+2022/08/13 19:34:40 product.go:196: get product comment cache failed , getting data from database 
+2022/08/14 11:54:56 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/14 11:57:56 product.go:98: get product search cache failed , getting data from database 
+2022/08/14 11:58:44 product.go:164: get product cache failed , getting data from database 
+2022/08/14 11:58:44 product.go:196: get product comment cache failed , getting data from database 
+2022/08/14 16:47:21 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/14 16:50:34 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/14 16:53:19 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/14 16:54:34 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/14 16:54:39 product.go:98: get product search cache failed , getting data from database 
+2022/08/14 16:54:45 product.go:164: get product cache failed , getting data from database 
+2022/08/14 16:54:45 product.go:196: get product comment cache failed , getting data from database 
+2022/08/14 17:12:00 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/14 19:06:33 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/14 19:18:46 main.go:169: Starting HTTP Server , Listening :8000 
+2022/08/14 19:32:57 main.go:169: Starting HTTP Server , Listening :8000 

@@ -23,7 +23,7 @@ type User struct {
 func (u User) CreateUser(db *gorm.DB) (*User, error) {
 	// 0 获取雪花id ，并找到序号
 	userId := global.SnowFlakeNode1.Generate().Int64()
-	tabSeq := userId % 5
+	tabSeq := userId % 100
 	// 1 开启事务
 	err := db.Transaction(func(tx *gorm.DB) error {
 		// 2 user_index插入数据
@@ -72,10 +72,9 @@ func (u User) SelectUserByUsername(db *gorm.DB) (*User, error) {
 	}
 
 	// 2 获得表序号
-	tabSeq := userIndex.UserId % 5
+	tabSeq := userIndex.UserId % 100
 
 	// 3 根据userId  获得真正的user
-
 	var user User
 	err = db.Raw("SELECT * FROM "+constant.USER_TAB+"_"+strconv.FormatInt(tabSeq, 10)+
 		" where user_id = ?", userIndex.UserId,

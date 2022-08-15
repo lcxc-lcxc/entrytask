@@ -3,7 +3,7 @@ Database:
   DBType: mysql
   Username: root
   Password: Lyj7395828
-  Host: localhost:3306
+  Host: 127.0.0.1:3306
   DBName: shopeepay_entrytask_db
   Charset: utf8mb4
   ParseTime: True
@@ -11,23 +11,23 @@ Database:
   MaxOpenConns: 100
 
 Redis:
-  Host: localhost:6379
+  Host: 127.0.0.1:6379
   DBIndex: 0
 
 RpcClient:
-  RPCHost: localhost:8001
+  RPCHost: 127.0.0.1:8001
   connNum: 20
 
 HttpServer:
   Mode: debug
-  Host: localhost
+  Host: 127.0.0.1
   Port: 8000
   ReadTimeout: 60
   WriteTimeout: 60
 
 RpcServer:
   Mode: debug
-  Host: localhost
+  Host: 127.0.0.1
   Port: 8001
   ReadTimeout: 60
   WriteTimeout: 60

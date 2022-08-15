@@ -27,7 +27,9 @@ func (p Product) SelectProductList(db *gorm.DB, PageIndex int, PageSize int) ([]
 
 func (p Product) SelectProductCount(db *gorm.DB) (int, error) {
 	var count int64
+
 	err := db.Model(&p).Count(&count).Error
+
 	if err != nil {
 		log.Println("Get Product count Failed")
 		return 0, err

@@ -11,8 +11,8 @@ type ProductListRequest struct {
 }
 
 type ProductListResponse struct {
-	ProductList  []dao.ProductBrief `json:"product_list"`
-	ProductCount int                `json:"product_count"`
+	ProductList []dao.ProductBrief `json:"product_list"`
+	//ProductCount int                `json:"product_count"`
 }
 
 type ProductSearchRequest struct {
@@ -36,13 +36,15 @@ func (svc *Service) ProductList(request *ProductListRequest) (*ProductListRespon
 	if err != nil {
 		return nil, errors.New("未知错误")
 	}
-	count, err := svc.dao.GetProductCount()
-	if err != nil {
-		return nil, errors.New("未知错误")
-	}
+
+	// 因为是是使用innodb，所以耗时太久且作用不大，遗弃
+	//count, err := svc.dao.GetProductCount()
+	//if err != nil {
+	//	return nil, errors.New("未知错误")
+	//}
+
 	return &ProductListResponse{
-		ProductList:  productBriefList,
-		ProductCount: count,
+		ProductList: productBriefList,
 	}, nil
 }
 
