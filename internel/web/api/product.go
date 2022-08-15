@@ -24,7 +24,7 @@ func (p *Product) List(c *gin.Context) {
 	if param.PageIndex <= 0 {
 		param.PageIndex = 1
 	}
-	if param.PageSize <= 0 || param.PageSize > 20 {
+	if param.PageSize <= 0 || param.PageSize > 10 {
 		param.PageSize = 10
 	}
 

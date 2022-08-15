@@ -21,7 +21,7 @@ type UserLoginRequest struct {
 
 type UserLoginResponse struct {
 	Username  string `json:"username"`
-	SessionId string `json:"sessionId"`
+	SessionId string `json:"session_id"`
 }
 
 type UserAuthRequest struct {
