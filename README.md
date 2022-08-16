@@ -1,17 +1,17 @@
 # 0 需求 overview
 
-  **End users**
+## 最终用户
 
-In the platform, users can view new products for sale, and comment on these products.
+在平台上，用户可以查看待售的新产品，并对这些产品发表评论。
 
-- Users need to **login** to view products, and can **register** onto the platform.
-- Users can browse a **paginated** list of products.
-- Users can **search** for specific products by **name** and **category**.
-- Users can view product details, including title, descriptions, product categories, product photos, and list of comments.
-- Users can **comment** (including reply to a user) on a product.
+- 用户需要**登录**才能查看产品，并且可以**注册**到平台上。
+- 用户可以浏览**分页**的产品列表。
+- 用户可以按**名称**和**类别**搜索特定产品。
+- 用户可以查看产品详细信息，包括标题、描述、产品类别、产品照片和评论列表。
+- 用户可以**对**产品**发表评论**（包括回复用户）。
 
-Development requirements for this section  
-No frontend development of the client application is necessary; you only need to build the API service for this task.
+**开发要求**  
+不需要客户端应用程序的前端开发；您只需要为此任务构建API服务。
 
 # 1 API设计
 
@@ -88,6 +88,8 @@ failed
 | data |            | any    | 是     | 具体业务数据     |
 |      | username   | string | 否     | 用户名        |
 |      | session_id | string | 否     | session_id |
+
+data内的session_id仅作为一个冗余字段，真正作用在set-cookie来设置session_id
 
 **set-cookie：session_id**
 
@@ -479,7 +481,7 @@ failed
 | data |                  |        |       |      |
 |      | comment_reply_id | uint   | 是     | 回复id |
 
-**请求事例**
+**请求示例**
 
 curl --location --request POST '127.0.0.1:80/api/products/3/comments/12/reply' \
 
@@ -514,6 +516,10 @@ failed
     "retcode": 20000002
 }
 ```
+
+**接口描述**
+
+该接口为对用户的评论进行回复。具体实现就是，校验登录后，往comment_reply_tab上插入该评论记录。该表上comment_id上面有索引，如果需要查询一条评论的所有回复，直接通过select+where来查询即可。
 
 # 2 错误码 Retcode
 
@@ -571,6 +577,10 @@ brew install jmeter
 ```
 
 ## 3.2 数据库准备
+
+**概览**
+
+![](.md/2022-08-16-18-54-46-image.png)
 
 ### 3.2.1 建表
 
@@ -690,7 +700,7 @@ CREATE TABLE `comment_reply_tab` (
 
 项目内路径：    **config/config.yaml**
 
-![](.md/2022-08-15-12-11-07-image.png)
+![](assets/b8ff3a3db8c21ee26761b199d67d1615871814c5.png)
 
 ### 3.3.2 nginx配置
 
@@ -801,7 +811,7 @@ go run cmd/http-server/main.go
 
 ## 4.2 项目架构
 
-![](.md/2022-08-15-16-48-08-image.png)
+![](.md/2022-08-16-18-55-21-image.png)
 
 # 5 性能测试
 
@@ -930,7 +940,21 @@ session_id=e944b74a-5694-4b4c-b5eb-49dfc4685a70; Path=/; Domain=127.0.0.1; HttpO
 | 产品搜索 | /api/products/search | 200 | 100000 | 17      | 11      | 11134 |
 | 产品详情 | /api/products/4      | 200 | 100000 | 17      | 10      | 10311 |
 
-**注：以上压测数据是在进行数据预热的情况下得到的结果，如果初次测试，数据还没有缓存到redis的情况下，QPS会明显下降。**（初次测试，另外一个可能的原因是长连接的建立也会耗费一定的时间）
+1. 线程数使用200个线程是基于文档的登录接口要求“200个唯一用户”的考虑，其他接口继续沿用，从而方便比较。
+
+2. 以上表格的数据均是测试单一接口的结果。
+
+3. 使用jmeter生成测试报告时，是同时测试4个接口，共800个线程运行。数据如下：
+
+![](.md/2022-08-16-18-56-02-image.png)
+
+可以看到：800个线程同时运行会导致线程上下文频繁切换，使得QPS基本减半（图中约5485.84/s）。
+
+~~详细报告如下目录：~~
+
+~~benchmark/report/index.html~~
+
+### 5.3.5 运行环境监控
 
 由于项目运行在本机goland下，以下为记录goland进程的cpu占用和内存占用
 
@@ -941,9 +965,13 @@ session_id=e944b74a-5694-4b4c-b5eb-49dfc4685a70; Path=/; Domain=127.0.0.1; HttpO
 | 产品搜索 | 316.0%      | 3422M    |
 | 产品列表 | 355.6%      | 3444M    |
 
-详细报告如下目录：
+### 5.3.6 压测分析
 
-**benchmark/report/index.html**
+1. 在本机运行时，系统监控不如在容器(或虚拟机)内这么直观，只能监控到service进程的运行，可以看到在运行时，cpu占用还是比较高的，主要原因有：密码的加解密、数据的封装、数据类型的转换，这些都是比较耗费cpu的操作。
+
+2. 在压测的这四个接口中，除了产品列表没有加缓存外，其他都加了缓存。因而运行时，io是比较低的。
+
+3. **注：以上压测数据是在进行数据预热的情况下得到的结果，如果初次测试，数据还没有缓存到redis的情况下，QPS会明显下降。**（初次测试，另外一个可能的原因是长连接的建立也会耗费一定的时间）
 
 # 6 开源组件的使用
 
@@ -952,6 +980,8 @@ session_id=e944b74a-5694-4b4c-b5eb-49dfc4685a70; Path=/; Domain=127.0.0.1; HttpO
 + grpc/grpc-go 作为本项目user service的一个rpc使用
 
 + go-gorm/gorm 作为本项目操作数据库的orm框架
+
++ /go-redis/redis 作为本项目的redis客户端
 
 + spf13/viper 作为本项目的配置组件
 
@@ -990,3 +1020,11 @@ session_id=e944b74a-5694-4b4c-b5eb-49dfc4685a70; Path=/; Domain=127.0.0.1; HttpO
   +                      user_index_tab                    user_xxx_tab
   
   + username ------------------------> user_id ------------------------> user
+
+# 9 关于登录和注册的密码加密算法
+
++ **BCrypt加密：** 一种加盐的单向Hash，不可逆的加密算法，同一种明文（plaintext），每次加密后的密文都不一样，而且不可反向破解生成明文，破解难度很大，更加安全。
+
++ **MD5加密：** 是不加盐的单向Hash，不可逆的加密算法，同一个密码经过hash的时候生成的是同一个hash值，在大多数的情况下，有些经过md5加密的方法将会被破解。
+
+相对来说，BCrypt比MD5更安全，但加密更慢。本次项目为了达到一定的QPS要求，故使用相对更快的MD5+盐值加密。在真正的生产系统，为了追求更好的安全性，宜使用BCrypt。
