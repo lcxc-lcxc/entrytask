@@ -690,7 +690,7 @@ CREATE TABLE `comment_reply_tab` (
 
 项目内路径：    **config/config.yaml**
 
-![](/Users/laoyanjie/Library/Application%20Support/marktext/images/2022-08-15-12-11-07-image.png)
+![](.md/2022-08-15-12-11-07-image.png)
 
 ### 3.3.2 nginx配置
 
@@ -801,7 +801,7 @@ go run cmd/http-server/main.go
 
 ## 4.2 项目架构
 
-![](/Users/laoyanjie/Library/Application%20Support/marktext/images/2022-08-15-16-48-08-image.png)
+![](.md/2022-08-15-16-48-08-image.png)
 
 # 5 性能测试
 
