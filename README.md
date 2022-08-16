@@ -580,7 +580,7 @@ brew install jmeter
 
 **概览**
 
-![](.md/2022-08-16-18-54-46-image.png)
+![](.md/2022-08-16-19-01-46-image.png)
 
 ### 3.2.1 建表
 
@@ -700,7 +700,7 @@ CREATE TABLE `comment_reply_tab` (
 
 项目内路径：    **config/config.yaml**
 
-![](assets/b8ff3a3db8c21ee26761b199d67d1615871814c5.png)
+![](.md/2022-08-15-12-11-07-image.png)
 
 ### 3.3.2 nginx配置
 
