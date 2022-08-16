@@ -46,18 +46,23 @@ curl --location --request POST '127.0.0.1:80/api/users' \
 
 **返回示例**
 
+success
+
 ```json
- //success
 {
     "data": {},
     "msg": "success",
     "retcode": 0
 }
-//fail
+```
+
+failed
+
+```json
 {
-    "data": " 用户名已存在",
-    "msg": "User Register Failed",
-    "retcode": 20000003
+ "data": " 用户名已存在",
+ "msg": "User Register Failed",
+ "retcode": 20000003
 }
 ```
 
@@ -94,19 +99,22 @@ curl --location --request POST '127.0.0.1:80/api/sessions'
 
 **返回示例**
 
+success
+
 ```json
-//success
 {
     "data": {
         "username": "12345678",
-        "sessionId": "session_id_dd126e58-6c1e-47c2-8ad7-1a87d22cdee9"
+        "session_id": "session_id_dd126e58-6c1e-47c2-8ad7-1a87d22cdee9"
     },
     "msg": "success",
     "retcode": 0
 }
+```
 
+failed
 
-//fail
+```json
 {
     "data": " 密码错误，请重新输入",
     "msg": "User Login Failed",
@@ -151,24 +159,28 @@ curl --location --request GET '127.0.0.1:80/api/products?page_index=9&page_size=
 
 **返回示例**
 
+success
+
 ```json
- //success
 {
     "data": {
         "product_list": [
-            {
+           {
                 "product_id": 8,
                 "product_name": "product_phone_8",
                 "category_name": "phone",
                 "product_picture_url": "https://baidu.com"
-            },
-            ...
-        "product_count": 99
+            }
+        ]
     },
     "msg": "success",
     "retcode": 0
 }
-//fail
+```
+
+failed
+
+```json
 {
     "data": "请登录",
     "msg": "User Login Required",
@@ -209,8 +221,9 @@ curl --location --request GET '127.0.0.1:80/api/products/search?search_by=produc
 
 **返回示例**
 
+success
+
 ```json
- //success
 {
     "data": {
         "product_search_list": [
@@ -225,7 +238,11 @@ curl --location --request GET '127.0.0.1:80/api/products/search?search_by=produc
     "msg": "success",
     "retcode": 0
 }
-//fail
+```
+
+failed
+
+```json
 {
     "data": "请登录",
     "msg": "User Login Required",
@@ -272,8 +289,9 @@ curl --location --request GET '127.0.0.1:80/api/products/9' \
 
 **返回示例**
 
+success
+
 ```json
-//success
 {
     "data": {
         "ProductDetail": {
@@ -286,16 +304,18 @@ curl --location --request GET '127.0.0.1:80/api/products/9' \
                     "from_name": "12345678",
                     "content": "这商品真不错",
                     "created_at": "2022-08-04T17:24:56+08:00"
-                },
-                ...
+                }
             ]
         }
     },
     "msg": "success",
     "retcode": 0
 }
+```
 
-//fail
+failed
+
+```json
 {
     "data": "请登录",
     "msg": "User Login Required",
@@ -343,13 +363,14 @@ curl --location --request GET '127.0.0.1:80/api/products/1/comments/1' \
 
 **返回示例**
 
+success
+
 ```json
-//success
 {
     "data": {
         "comment": {
             "comment_id": 1,
-            "product_id": 1,
+            "product_id": 1,
             "from_name": "12345678",
             "comment_content": "这商品真不错",
             "created_at": "2022-08-04T17:24:56+08:00",
@@ -360,16 +381,18 @@ curl --location --request GET '127.0.0.1:80/api/products/1/comments/1' \
                     "reply_from_name": "12345678",
                     "reply_content": "确实",
                     "created_at": "2022-08-04T18:51:00+08:00"
-                },
-                ...
+                }
             ]
         }
     },
     "msg": "success",
     "retcode": 0
 }
+```
 
-//fail
+failed
+
+```json
 {
     "data": "请登录",
     "msg": "User Login Required",
@@ -409,8 +432,9 @@ curl --location --request POST '127.0.0.1:80/api/products/2/comments' \
 
 **返回示例**
 
+success
+
 ```json
-//success
 {
     "data": {
         "comment_id": 11
@@ -418,8 +442,11 @@ curl --location --request POST '127.0.0.1:80/api/products/2/comments' \
     "msg": "success",
     "retcode": 0
 }
+```
 
-//fail
+failed
+
+```json
 {
     "data": "请登录",
     "msg": "User Login Required",
@@ -466,8 +493,9 @@ curl --location --request POST '127.0.0.1:80/api/products/3/comments/12/reply' \
 
 **返回示例**
 
+success
+
 ```json
-//success
 {
     "data": {
         "comment_reply_id": 18
@@ -475,8 +503,11 @@ curl --location --request POST '127.0.0.1:80/api/products/3/comments/12/reply' \
     "msg": "success",
     "retcode": 0
 }
+```
 
-//fail
+failed
+
+```json
 {
     "data": "请登录",
     "msg": "User Login Required",
@@ -876,7 +907,7 @@ jmeter
 
 需要添加cookie
 
-```json
+```
 session_id=e944b74a-5694-4b4c-b5eb-49dfc4685a70; Path=/; Domain=127.0.0.1; HttpOnly; Expires=Mon, 15 Aug 2022 08:24:57 GMT;
 ```
 
