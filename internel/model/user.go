@@ -20,6 +20,8 @@ type User struct {
 }
 
 // CreateUser
+// 使用雪花算法生成user_id
+// 开启事务，事务中往user_index_tab以及user_tab_xxx中插入数据
 func (u User) CreateUser(db *gorm.DB) (*User, error) {
 	// 0 获取雪花id ，并找到序号
 	userId := global.SnowFlakeNode1.Generate().Int64()
@@ -61,6 +63,8 @@ func (u User) CreateUser(db *gorm.DB) (*User, error) {
 	return &u, nil
 }
 
+// SelectUserByUsername
+// 用username往user_index_tab里面获取到user_id，然后再根据user_id定位到表的序号，再从user_tab_xxx获取到user
 func (u User) SelectUserByUsername(db *gorm.DB) (*User, error) {
 	// 1 先用username获取userid
 	userIndex := UserIndex{

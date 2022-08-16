@@ -22,7 +22,7 @@ var (
 )
 
 func init() {
-	//
+	// 调整并发的运行性能，使用多核
 	cpuNum := runtime.NumCPU()
 	runtime.GOMAXPROCS(cpuNum - 1)
 	err := setupFlag()
@@ -111,6 +111,7 @@ func setupRPCClient() error {
 	return nil
 }
 
+// setupFlag命令行启动相关
 func setupFlag() error {
 	flag.StringVar(&port, "port", "", "启动端口")
 	flag.StringVar(&mode, "mode", "", "启动模式")
